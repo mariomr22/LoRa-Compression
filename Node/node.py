@@ -5,12 +5,22 @@ import time
 import random
 from network import LoRa
 
-# A basic package header, B: 1 byte for the deviceId, B: 1 bytes for the pkg size
+# A basic package header
+# B: 1 byte for the deviceId
+# B: 1 bytes for the pkg size
+# %ds: Formated string for string
 _LORA_PKG_FORMAT = "BB%ds"
+
+# A basic ack package
+# B: 1 byte for the deviceId
+# B: 1 bytes for the pkg size
+# B: 1 bytes for the success or error message
 _LORA_PKG_ACK_FORMAT = "BBB"
+
+#The deviceID changes in each device
 DEVICE_ID = 0x01
 
-# The region in Europe is LoRa.EU868
+# Open a Lora Socket in Europe region. The value tx_iq avoid listening to our own messages
 lora = LoRa(mode=LoRa.LORA, tx_iq=True, region=LoRa.EU868)
 lora_sock = socket.socket(socket.AF_LORA, socket.SOCK_RAW)
 lora_sock.setblocking(False)
