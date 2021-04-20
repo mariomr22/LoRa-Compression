@@ -1,7 +1,12 @@
 import socket
 import struct
-
+import urequests
+import connectWifi
 from network import LoRa
+
+ # Server addres
+url = 'http://XXX.XXX.XXX.XXX:XXXX'
+ip = connectWifi.do_connect()
 
 # A basic package header
 # B: 1 byte for the deviceId
