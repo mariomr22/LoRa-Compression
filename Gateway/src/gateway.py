@@ -28,6 +28,7 @@ while (True):
       device_id, pkg_len, msg = struct.unpack(_LORA_PKG_FORMAT % recv_pkg_len, recv_pkg)
 
       print('Device: %d - Pkg:  %s' % (device_id, msg))
+      #Send a POST request, the return type is the response of the request.
       r = urequests.post(url, data = msg)
       print(r.text)
 
