@@ -1,11 +1,13 @@
+import sys
+sys.path.append("../Gateway/lib")
 import socket
 import struct
-import urequests
 import connectWifi
+import urequests
 from network import LoRa
 
  # Server addres
-url = 'http://XXX.XXX.XXX.XXX:XXXX'
+url = 'http://192.168.1.94:8080'
 ip = connectWifi.do_connect()
 
 # A basic package header
