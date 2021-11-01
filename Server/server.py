@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
+from http.server import HTTPServer, BaseHTTPRequestHandler
 from optparse import OptionParser
 
 class RequestHandler(BaseHTTPRequestHandler):

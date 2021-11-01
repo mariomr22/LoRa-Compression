@@ -1,13 +1,16 @@
 import os
 import socket
-import struct
 import time
-import os
-import socket
 import struct
-import time
-import random
+import crypto
 from network import LoRa
+
+def Random():
+   r = crypto.getrandbits(32)
+   return ((r[0]<<24)+(r[1]<<16)+(r[2]<<8)+r[3])/4294967295.0
+
+def RandomRange(rfrom, rto):
+   return Random()*(rto-rfrom)+rfrom
 
 # A basic package header
 # B: 1 byte for the deviceId
@@ -31,10 +34,10 @@ lora_sock.setblocking(False)
 
 while(True):
     # Package send containing a simple string
-    randomValue = random.randint(1,10)
-    msg = str(round(randomValue),1)
+    value = RandomRange(1, 10)
+    msg = str(round(value, 2))
     pkg = struct.pack(_LORA_PKG_FORMAT % len(msg), DEVICE_ID, len(msg), msg)
-    print("The value is: " + msg)
+    print("Sending value: " + msg)
     lora_sock.send(pkg)
         
     # Wait for the response from the gateway. NOTE: For this demo the device does an infinite loop for while waiting the response. Introduce a max_time_waiting for you application
