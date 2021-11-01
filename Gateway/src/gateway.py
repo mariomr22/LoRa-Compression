@@ -7,7 +7,7 @@ import urequests
 from network import LoRa
 
  # Server addres
-url = 'http://192.168.1.94:8080'
+url = 'localhost'
 ip = connectWifi.do_connect()
 
 # A basic package header

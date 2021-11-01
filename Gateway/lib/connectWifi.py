@@ -31,5 +31,6 @@ def do_connect():
         machine.idle()
 
     print("Connection successful")
+    print(wlan.ifconfig())
     ip = wlan.ifconfig()
     return ip[0]

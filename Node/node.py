@@ -31,7 +31,7 @@ lora_sock.setblocking(False)
 
 while(True):
     # Package send containing a simple string
-    randomValue = random.randint(15,35)
+    randomValue = random.randint(1,10)
     msg = str(round(randomValue),1)
     pkg = struct.pack(_LORA_PKG_FORMAT % len(msg), DEVICE_ID, len(msg), msg)
     print("The value is: " + msg)
